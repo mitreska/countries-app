@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct CountryView: View {
+    
     var body: some View {
-        VStack {
-            Text("Hello, World!")
-                .padding(.top, 20)
-            
-            Spacer()
+        ScrollView(.vertical) {
+            VStack {
+                Text("Hello, World!")
+                    .padding(.top, 20)
+                    .frame(width: .infinity, alignment: .leading)
+                
+                Spacer()
+            }
         }
         .navigationTitle("BRASIL")
     }

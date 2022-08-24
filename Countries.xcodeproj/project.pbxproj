@@ -15,6 +15,7 @@
 		FA31360728B4920A00428D84 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA31360628B4920A00428D84 /* Country.swift */; };
 		FA31360A28B4969500428D84 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA31360928B4969500428D84 /* CountryView.swift */; };
 		FADB308B28B5C4D200493EC9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADB308A28B5C4D200493EC9 /* LoadingView.swift */; };
+		FADB308D28B67D5D00493EC9 /* APIConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADB308C28B67D5C00493EC9 /* APIConnection.swift */; };
 		FAF02EB728B48292000DEB4F /* CountriesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF02EB628B48292000DEB4F /* CountriesApp.swift */; };
 		FAF02EB928B48292000DEB4F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF02EB828B48292000DEB4F /* ContentView.swift */; };
 		FAF02EBB28B48299000DEB4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAF02EBA28B48299000DEB4F /* Assets.xcassets */; };
@@ -56,6 +57,7 @@
 		FA31360628B4920A00428D84 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		FA31360928B4969500428D84 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		FADB308A28B5C4D200493EC9 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		FADB308C28B67D5C00493EC9 /* APIConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConnection.swift; sourceTree = "<group>"; };
 		FAF02EB328B48292000DEB4F /* Countries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Countries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAF02EB628B48292000DEB4F /* CountriesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesApp.swift; sourceTree = "<group>"; };
 		FAF02EB828B48292000DEB4F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -164,6 +166,14 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		FADB308E28B67D6400493EC9 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				FADB308C28B67D5C00493EC9 /* APIConnection.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		FAF02EAA28B48292000DEB4F = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +199,7 @@
 		FAF02EB528B48292000DEB4F /* Countries */ = {
 			isa = PBXGroup;
 			children = (
+				FADB308E28B67D6400493EC9 /* Network */,
 				FA31360828B4921500428D84 /* View */,
 				FA31360528B491D500428D84 /* Model */,
 				FAF02EBA28B48299000DEB4F /* Assets.xcassets */,
@@ -460,6 +471,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FADB308D28B67D5D00493EC9 /* APIConnection.swift in Sources */,
 				FAF02EB928B48292000DEB4F /* ContentView.swift in Sources */,
 				FAF02EB728B48292000DEB4F /* CountriesApp.swift in Sources */,
 				FA31360128B4887000428D84 /* CountriesView.swift in Sources */,
