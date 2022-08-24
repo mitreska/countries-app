@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct CountryRow: View {
+    let country: Country
+    
     var body: some View {
         HStack {
             Image("placeholder")
                 .padding()
                 .frame(width: 70.0, height: 55.0)
             
-            Text("Brasil")
+            Text(country.areaName ?? "Ops! No name found.")
                 .textCase(.uppercase)
                 .font(.subheadline)
             
@@ -25,6 +27,6 @@ struct CountryRow: View {
 
 struct CountryRow_Previews: PreviewProvider {
     static var previews: some View {
-        CountryRow()
+        CountryRow(country: Country())
     }
 }

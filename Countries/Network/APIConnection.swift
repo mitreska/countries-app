@@ -11,15 +11,22 @@ import Combine
 import UIKit
 
 final class APIConnection {
-    private let baseURLCountry = ""
-    private let baseURLImage = ""
+    private let baseURLCountry = "https://myatlanticoapi-quality.appdev.p.azurewebsites.net/v7/SignUp/GetAreaCodes"
+    private let baseURLImage = "https://en.wikipedia.org/api/rest_v1/page/summary/"
     private var task: Cancellable? = nil
     
     init(){}
     
-    func fetchData() -> DataResponsePublisher<Country> {
+    func fetchData() -> DataResponsePublisher<[Country]> {
         return AF.request(baseURLCountry, method: .get)
             .validate(statusCode: 200..<400)
-            .publishDecodable(type: Country.self)
+            .publishDecodable(type: [Country].self)
+    }
+    
+    func getDescription(countryName: String) -> DataResponsePublisher<CountryDescription> {
+        let url = baseURLImage + countryName
+        return AF.request(url, method: .get)
+            .validate(statusCode: 200..<400)
+            .publishDecodable(type: CountryDescription.self)
     }
 }

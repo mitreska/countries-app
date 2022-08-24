@@ -8,20 +8,28 @@
 import SwiftUI
 
 struct CountriesView: View {
-    @State var list: [Country] = [Country(with: "Rússica"), Country(with: "Brasil"), Country(with: "Alemanha"), Country(with: "Argentina")]
+    @StateObject var viewModel = CountriesViewModel()
+    
     
     var body: some View {
-        List {
-            ForEach($list) { country in
-                NavigationLink {
-                    CountryView()
-                } label: {
-                    CountryRow()
+        if $viewModel.countriesList.isEmpty {
+            LoadingView()
+                .onAppear(perform: {
+                    viewModel.fetchData()
+                })
+        } else {
+            List {
+                ForEach(viewModel.countriesList) { country in
+                    NavigationLink {
+                        CountryView(viewModel: CountryViewModel(with: country))
+                    } label: {
+                        CountryRow(country: country)
+                    }
                 }
             }
+            .navigationTitle("Countries")
+            .navigationBarTitleDisplayMode(.large)
         }
-        .navigationTitle("Countries")
-        .navigationBarTitleDisplayMode(.large)
     }
 }
 
