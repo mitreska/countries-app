@@ -14,6 +14,10 @@ class CountryDescription: Codable, Identifiable {
         self.description = countryDescription.description
     }
     
+    init(with message: String) {
+        self.description = message
+    }
+    
     enum CodingKeys: String, CodingKey {
         case description = "extract"
     }

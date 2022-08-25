@@ -16,11 +16,39 @@ struct CountryView: View {
             VStack {
                 HStack {
                     // aqui vai a bandeira e o nome com o iso3
+                    Image("placeholder")
+                        .resizable()
+                        .frame(width: 150, height: 100, alignment: .leading)
+                    
+                    VStack {
+                        Text(viewModel.country.areaName ?? "No name")
+                            .font(.title)
+                        
+                        Text(viewModel.country.iso3 ?? "No ISO")
+                            .font(.subheadline)
+                            .foregroundColor(Color.secondary)
+                            .italic()
+                            .frame(alignment: .leading)
+                            
+                        Spacer()
+                    }
+                    .padding(5)
+                    
+                    Spacer()
                 }
+                .padding(.leading, 45)
+                
+                Divider()
+                    .padding(.horizontal, 100)
+                    .padding(.vertical, 10)
+                
+                Text("About \(viewModel.country.areaName ?? "")")
+                    .font(.largeTitle)
+                    .padding(.vertical, 5)
                 
                 if let countryDescription = viewModel.countryDescription {
                     Text(countryDescription.description)
-                        .padding(20)
+                        .padding(.horizontal, 20)
                         .font(.body)
                         .lineSpacing(1.5)
                     

@@ -39,6 +39,7 @@ class CountryViewModel: ObservableObject {
                         self?.countryDescription = res
                     case .failure(let error):
                         print("ERROR RESPONSE: ", error.localizedDescription)
+                        self?.countryDescription = CountryDescription(with: "No description found!")
                     }
                 })
         }

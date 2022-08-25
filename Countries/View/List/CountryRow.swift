@@ -12,6 +12,7 @@ struct CountryRow: View {
     
     var body: some View {
         HStack {
+            // change to kingfisher image component
             Image("placeholder")
                 .padding()
                 .frame(width: 70.0, height: 55.0)
