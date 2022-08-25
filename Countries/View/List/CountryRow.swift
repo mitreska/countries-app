@@ -6,16 +6,31 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CountryRow: View {
     let country: Country
+    @EnvironmentObject var countriesViewModel: CountriesViewModel
     
     var body: some View {
         HStack {
             // change to kingfisher image component
-            Image("placeholder")
-                .padding()
-                .frame(width: 70.0, height: 55.0)
+            KFImage.url(URL(string: countriesViewModel.setImageURL(with: country)))
+                .cacheMemoryOnly()
+                .roundCorner(radius: .point(10), roundingCorners: .all)
+                .resizable()
+//                .onProgress { receivedSize, totalSize in  }
+//                .onSuccess { result in
+//                    print("https://www.kestrel.ws/flags/current/lg/\(country.iso3).png")
+//                    print(result)
+//                }
+//                .onFailure { error in
+//                    print("https://www.kestrel.ws/flags/current/lg/\(country.iso3!).png")
+//                    print(error.localizedDescription)
+//                }
+                .aspectRatio(contentMode: .fit)
+                .clipShape(Circle())
+                .frame(width: 80, height: 80, alignment: .center)
             
             Text(country.areaName ?? "Ops! No name found.")
                 .textCase(.uppercase)

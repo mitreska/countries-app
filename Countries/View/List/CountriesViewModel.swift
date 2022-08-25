@@ -33,4 +33,13 @@ class CountriesViewModel: ObservableObject {
                 }
             })
     }
+    
+    func setImageURL(with country: Country) -> String {
+        if let iso3 = country.iso3 {
+            return "\(apiConnection.getImageURL())\(iso3.lowercased()).png"
+        } else {
+            print("ERROR SETIMAGEURL_CALL: No iso3 found!")
+            return ""
+        }
+    }
 }

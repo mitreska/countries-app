@@ -29,6 +29,7 @@ struct CountriesView: View {
             }
             .navigationTitle("Countries")
             .navigationBarTitleDisplayMode(.large)
+            .environmentObject(viewModel)
         }
     }
 }

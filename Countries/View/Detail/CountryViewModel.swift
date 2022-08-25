@@ -24,7 +24,7 @@ class CountryViewModel: ObservableObject {
     
     func getDescription() {
         if let name = country.areaName {
-            self.task = apiConnection.getDescription(countryName: name)
+            self.task = apiConnection.getDescription(countryName: name.lowercased())
                 .sink(receiveCompletion: { completion in
                     switch completion {
                     case .finished:
@@ -44,5 +44,14 @@ class CountryViewModel: ObservableObject {
                 })
         }
         
+    }
+    
+    func setImageURL() -> String {
+        if let iso3 = self.country.iso3 {
+            return "\(apiConnection.getImageURL())\(iso3.lowercased()).png"
+        } else {
+            print("ERROR SETIMAGEURL_CALL: No iso3 found!")
+            return ""
+        }
     }
 }

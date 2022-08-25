@@ -8,9 +8,10 @@
 import Foundation
 
 class Country: Identifiable, Codable {
-    var iso3, areaCode, areaName: String?
+    var imageURL, iso3, areaCode, areaName: String?
     
     init() {
+        self.imageURL = nil
         self.areaName = nil
         self.iso3 = nil
         self.areaCode = nil
@@ -22,6 +23,7 @@ class Country: Identifiable, Codable {
         self.iso3 = nil
         self.areaCode = nil
         self.areaName = nil
+        self.imageURL = nil
     }
     
     init(with country: Country){
@@ -29,5 +31,6 @@ class Country: Identifiable, Codable {
         self.iso3 = country.iso3
         self.areaCode = country.areaCode
         self.areaName = country.areaName
+        self.imageURL = nil
     }
 }

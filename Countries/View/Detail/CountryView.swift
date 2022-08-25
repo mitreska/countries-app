@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CountryView: View {
     
@@ -16,9 +17,11 @@ struct CountryView: View {
             VStack {
                 HStack {
                     // aqui vai a bandeira e o nome com o iso3
-                    Image("placeholder")
+                    KFImage.url(URL(string: viewModel.setImageURL()))
+                        .cacheMemoryOnly()
                         .resizable()
-                        .frame(width: 150, height: 100, alignment: .leading)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 120, height: 120, alignment: .center)
                     
                     VStack {
                         Text(viewModel.country.areaName ?? "No name")
@@ -29,8 +32,6 @@ struct CountryView: View {
                             .foregroundColor(Color.secondary)
                             .italic()
                             .frame(alignment: .leading)
-                            
-                        Spacer()
                     }
                     .padding(5)
                     
