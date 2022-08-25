@@ -13,6 +13,8 @@ class CountriesViewModel: ObservableObject {
     private var task: Cancellable? = nil
     
     @Published var countriesList: [Country] = []
+    @Published var filteredCountries: [Country] = []
+    @Published var searchQuery = ""
     
     func fetchData() {
         self.task = apiConnection.fetchData()
@@ -28,6 +30,7 @@ class CountriesViewModel: ObservableObject {
                 case .success(let res):
                     print("SUCCESS: ", res)
                     self?.countriesList = res.map { Country(with: $0) }
+                    self?.filteredCountries = self?.countriesList ?? []
                 case .failure(let error):
                     print("ERROR RESPONSE: ", error.localizedDescription)
                 }
@@ -40,6 +43,17 @@ class CountriesViewModel: ObservableObject {
         } else {
             print("ERROR SETIMAGEURL_CALL: No iso3 found!")
             return ""
+        }
+    }
+    
+    func filterCountries() {
+        if searchQuery.isEmpty {
+            filteredCountries = countriesList
+        } else {
+            filteredCountries = countriesList.filter({
+                $0.areaName!
+                    .localizedCaseInsensitiveContains(searchQuery)
+            })
         }
     }
 }

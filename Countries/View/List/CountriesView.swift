@@ -19,7 +19,7 @@ struct CountriesView: View {
                 })
         } else {
             List {
-                ForEach(viewModel.countriesList) { country in
+                ForEach(viewModel.filteredCountries) { country in
                     NavigationLink {
                         CountryView(viewModel: CountryViewModel(with: country))
                     } label: {
@@ -28,6 +28,10 @@ struct CountriesView: View {
                 }
             }
             .navigationTitle("Countries")
+            .searchable(text: $viewModel.searchQuery, prompt: "Search for country")
+            .onChange(of: viewModel.searchQuery) { _ in
+                viewModel.filterCountries()
+            }
             .navigationBarTitleDisplayMode(.large)
             .environmentObject(viewModel)
         }
