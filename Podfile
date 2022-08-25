@@ -7,6 +7,7 @@ target 'Countries' do
 
   # Pods for Countries
   pod 'Alamofire'
+  pod 'Kingfisher', '~> 7.0'
 
   target 'CountriesTests' do
     inherit! :search_paths
